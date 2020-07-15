@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { gql, ApolloServer } = require("apollo-server-express");
 const { v4 } = require("uuid");
+const { openapi } = require("./openapi");
 
 const typeDefs = gql`
   """
@@ -95,7 +96,7 @@ const typeDefs = gql`
   }
 `;
 
-const rootPassword = "a password";
+const rootPassword = "pa$$w0rd";
 const unauthenticated = "unauthenticated";
 const root = "root";
 
@@ -231,6 +232,13 @@ app.get("/version", (req, res) => {
   });
 });
 
+app.get("/openapi", (req, res) => {
+  res.json(openapi);
+});
+
 app.listen({ port: 4000 }, () =>
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+  console.log(
+    `Server ready at http://localhost:4000 with graphql at http://localhost:4000${server.graphqlPath}
+and openapi spec visible at http://localhost:4000/openapi. Have fun!`
+  )
 );
