@@ -2,7 +2,7 @@
 
 Welcome to the Meeshkan Bank!
 
-At the Meeshkan Bank, we send each other Meeshkan money and watch it slowly accumulate interested.
+At the Meeshkan Bank, we send each other Meeshkan Money and watch eagerly as it accumulates interest.
 
 The Meeshkan Bank is proudly tested by Meeshkan, and if you sign up for Meeshkan, it will be the example project you see on the platform.
 
