@@ -20,7 +20,7 @@ To run the Meeshkan bank in dev mode, you can run
 npm install && npm run dev
 ```
 
-### How to use
+## GraphQL
 
 The Meeshkan Bank's graphql endpoint is accessible at `http://localhost:4000/graphql`. Point your browser there after starting up the Meeshkan bank and you'll see a nice UI where you can interact with the bank.
 
@@ -28,10 +28,10 @@ When you start the Meeshkan bank, it is in an unauthenticated state. You can aut
 
 From the root state, you can add clients and delete clients. You can also authenticate as a client, which allows you to send money to and fro.
 
-### OpenAPI
+## OpenAPI
 
 In addition to its primary graphql interface, the Meeshkan bank does have some extra endpoints. To learn what these are, you can point your browser at http://localhost:4000/openapi.
 
-### Gotchyas
+## Gotchyas
 
 The Meeshkan Bank has no persistence layer (what a bank!), so every time you restart it, the balances reset. If only real banks worked that way...
