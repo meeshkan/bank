@@ -3,7 +3,7 @@ exports.openapi = {
   servers: [
     {
       description: "Localhost rules!",
-      url: "http://localhost:4000",
+      url: process.env.GAE_ENV ? "http://meeshkan.io/bank" : "http://localhost:8080/bank",
     },
   ],
   info: {

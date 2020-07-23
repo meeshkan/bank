@@ -1,0 +1,2 @@
+service: bank
+runtime: nodejs12
