@@ -221,24 +221,26 @@ const resolvers = {
   },
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ typeDefs, resolvers, introspection: true });
 
 const app = express();
-server.applyMiddleware({ app });
+server.applyMiddleware({ app, path: "/bank/graphql" });
 
-app.get("/version", (req, res) => {
+app.get("/bank/version", (req, res) => {
   res.json({
     version: "0.0.0",
   });
 });
 
-app.get("/openapi", (req, res) => {
+app.get("/bank/openapi", (req, res) => {
   res.json(openapi);
 });
 
-app.listen({ port: 4000 }, () =>
+const PORT = 8080;
+
+app.listen({ port: PORT }, () =>
   console.log(
-    `Server ready at http://localhost:4000 with graphql at http://localhost:4000${server.graphqlPath}
-and openapi spec visible at http://localhost:4000/openapi. Have fun!`
+    `Server ready at http://localhost:${PORT} with graphql at http://localhost:${PORT}${server.graphqlPath}
+and openapi spec visible at http://localhost:${PORT}/bank/openapi. Have fun!`
   )
 );
