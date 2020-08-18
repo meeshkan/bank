@@ -140,7 +140,7 @@ const resolvers = {
     addClient: (parent, args, context) => {
       if (role !== root) {
         throw new AuthenticationError(
-          "Must be authenticated as root do add a client"
+          "Must be authenticated as root to add a client"
         );
       }
       const newClient = {
@@ -156,7 +156,7 @@ const resolvers = {
     removeClient: (parent, args, context) => {
       if (role !== root) {
         throw new AuthenticationError(
-          "Must be authenticated as root do add a client"
+          "Must be authenticated as root to remove a client"
         );
       }
       let i = 0;
