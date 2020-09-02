@@ -4,7 +4,6 @@ const {
   UserInputError,
 } = require("apollo-server");
 const express = require("express");
-const bodyParser = require("body-parser");
 const { gql, ApolloServer } = require("apollo-server-express");
 const { v4: UUID } = require("uuid");
 const { openapi } = require("./openapi");
