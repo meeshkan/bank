@@ -1,4 +1,8 @@
-const { AuthenticationError, ForbiddenError } = require("apollo-server");
+const {
+  AuthenticationError,
+  ForbiddenError,
+  UserInputError,
+} = require("apollo-server");
 const express = require("express");
 const bodyParser = require("body-parser");
 const { gql, ApolloServer } = require("apollo-server-express");
@@ -142,6 +146,11 @@ const resolvers = {
       if (role !== root) {
         throw new AuthenticationError(
           "Must be authenticated as root to add a client"
+        );
+      }
+      if (!(args.password.length >= 8)) {
+        throw new UserInputError(
+          "Password must be at least 8 characters long"
         );
       }
       const newClient = {
