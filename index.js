@@ -9,7 +9,7 @@ const { v4: UUID } = require("uuid");
 const { openapi } = require("./openapi");
 const { version } = require("./package.json");
 
-const minPasswordLength = 8;
+const MIN_PASSWORD_LENGTH = 8;
 const emailRegex = /(.+)@(.+){2,}\.(.+){2,}/;
 
 const typeDefs = gql`
@@ -171,9 +171,9 @@ const resolvers = {
         )
       }
 
-      if (!(args.password.length >= minPasswordLength)) {
+      if (!(args.password.length >= MIN_PASSWORD_LENGTH)) {
         throw new UserInputError(
-          `Password must be at least ${minPasswordLength} characters long`
+          `Password must be at least ${MIN_PASSWORD_LENGTH} characters long`
         );
       }
 
