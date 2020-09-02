@@ -8,7 +8,7 @@
     "dev": "nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Meeshkan",
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^2.15.1",
