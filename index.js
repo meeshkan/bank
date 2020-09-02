@@ -11,6 +11,7 @@ const { openapi } = require("./openapi");
 const { version } = require("./package.json");
 
 const minPasswordLength = 8;
+const emailRegex = /(.+)@(.+){2,}\.(.+){2,}/;
 
 const typeDefs = gql`
   """
@@ -148,6 +149,11 @@ const resolvers = {
       if (role !== root) {
         throw new AuthenticationError(
           "Must be authenticated as root to add a client"
+        );
+      }
+      if (!emailRegex.test(args.email)) {
+        throw new UserInputError(
+          "Please enter a valid email address"
         );
       }
       if (!(args.password.length >= minPasswordLength)) {
