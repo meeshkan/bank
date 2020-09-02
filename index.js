@@ -10,6 +10,8 @@ const { v4 } = require("uuid");
 const { openapi } = require("./openapi");
 const { version } = require("./package.json");
 
+const minPasswordLength = 8;
+
 const typeDefs = gql`
   """
   A user in the Meeshkan Bank
@@ -148,9 +150,9 @@ const resolvers = {
           "Must be authenticated as root to add a client"
         );
       }
-      if (!(args.password.length >= 8)) {
+      if (!(args.password.length >= minPasswordLength)) {
         throw new UserInputError(
-          "Password must be at least 8 characters long"
+          `Password must be at least ${minPasswordLength} characters long`
         );
       }
       const newClient = {
