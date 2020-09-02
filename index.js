@@ -6,7 +6,7 @@ const {
 const express = require("express");
 const bodyParser = require("body-parser");
 const { gql, ApolloServer } = require("apollo-server-express");
-const { v4 } = require("uuid");
+const { v4: UUID } = require("uuid");
 const { openapi } = require("./openapi");
 const { version } = require("./package.json");
 
@@ -179,7 +179,7 @@ const resolvers = {
       }
 
       const newClient = {
-        id: v4(),
+        id: UUID(),
         name: args.name,
         email: args.email,
         password: args.password,
