@@ -151,6 +151,11 @@ const resolvers = {
           "Must be authenticated as root to add a client"
         );
       }
+      if (clients.map(client => client.name).includes(args.name)) {
+        throw new UserInputError(
+          `${args.name} is already a part of our clientele`
+        );
+      }
       if (!emailRegex.test(args.email)) {
         throw new UserInputError(
           "Please enter a valid email address"
