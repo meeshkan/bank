@@ -196,14 +196,12 @@ const resolvers = {
         );
       }
 
-      let i = 0;
-      for (; i < clients.length; i++) {
-        if (args.id === clients[i].id) break;
-      }
-      if (i === clients.length) {
+      const index = clients.findIndex(client => client.id === args.id);
+      if (index === -1) {
         return false;
       }
-      delete clients[i];
+
+      clients.splice(index, 1);
       return true;
     },
     authenticateAsRoot: (parent, args, context) => {
