@@ -161,6 +161,11 @@ const resolvers = {
           "Please enter a valid email address"
         );
       }
+      if (clients.map(client => client.email).includes(args.email)) {
+        throw new UserInputError(
+          `The email address ${args.email} is associated with an existing client`
+        )
+      }
       if (!(args.password.length >= minPasswordLength)) {
         throw new UserInputError(
           `Password must be at least ${minPasswordLength} characters long`
