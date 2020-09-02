@@ -135,12 +135,14 @@ const resolvers = {
       if (role !== root) {
         throw new AuthenticationError("Can only fetch users as root");
       }
+
       return clients;
     },
     me: () => {
       if (role === root || role === unauthenticated) {
         throw new AuthenticationError("Unauthenticated as client");
       }
+
       return role;
     },
   },
@@ -151,26 +153,31 @@ const resolvers = {
           "Must be authenticated as root to add a client"
         );
       }
+
       if (clients.map(client => client.name).includes(args.name)) {
         throw new UserInputError(
           `${args.name} is already a part of our clientele`
         );
       }
+
       if (!emailRegex.test(args.email)) {
         throw new UserInputError(
           "Please enter a valid email address"
         );
       }
+
       if (clients.map(client => client.email).includes(args.email)) {
         throw new UserInputError(
           `The email address ${args.email} is associated with an existing client`
         )
       }
+
       if (!(args.password.length >= minPasswordLength)) {
         throw new UserInputError(
           `Password must be at least ${minPasswordLength} characters long`
         );
       }
+
       const newClient = {
         id: v4(),
         name: args.name,
@@ -178,6 +185,7 @@ const resolvers = {
         password: args.password,
         balanceInEuroCents: args.balance,
       };
+
       clients.push(newClient);
       return newClient;
     },
@@ -187,6 +195,7 @@ const resolvers = {
           "Must be authenticated as root to remove a client"
         );
       }
+
       let i = 0;
       for (; i < clients.length; i++) {
         if (args.id === clients[i].id) break;
@@ -202,6 +211,7 @@ const resolvers = {
         role = root;
         return true;
       }
+
       throw new AuthenticationError("Incorrect password");
     },
     authenticateAsClient: (parent, args, context) => {
@@ -209,14 +219,17 @@ const resolvers = {
         (client) =>
           client.email == args.email && client.password == args.password
       );
+
       if (client.length > 1) {
         throw new ForbiddenError(
           "The Meeshkan bank is in an inconsistent state. Sorry!"
         );
       }
+
       if (client.length === 0) {
         throw new AuthenticationError("Email or password incorrect");
       }
+
       role = client[0];
       return client[0];
     },
@@ -224,20 +237,24 @@ const resolvers = {
       if (role === root || role === unauthenticated) {
         throw new AuthenticationError("Unauthenticated as client");
       }
+
       const client = clients.filter((client) => client.id == args.who);
       if (client.length > 1) {
         throw new ForbiddenError(
           "The Meeshkan bank is in an inconsistent state. Sorry!"
         );
       }
+
       if (client.length === 0) {
         throw new AuthenticationError("Could not find a client with id " + id);
       }
+
       if (role.balanceInEuroCents < args.amount) {
         throw new ForbiddenError(
           "You have insufficient funds to complete this transaction."
         );
       }
+
       role.balanceInEuroCents -= args.amount;
       client[0].balanceInEuroCents += args.amount;
       return role;
