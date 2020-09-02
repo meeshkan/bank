@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const { gql, ApolloServer } = require("apollo-server-express");
 const { v4 } = require("uuid");
 const { openapi } = require("./openapi");
+const { version } = require("./package.json");
 
 const typeDefs = gql`
   """
@@ -228,7 +229,7 @@ server.applyMiddleware({ app, path: "/bank/graphql" });
 
 app.get("/bank/version", (req, res) => {
   res.json({
-    version: "0.0.0",
+    version,
   });
 });
 
