@@ -1,24 +1,35 @@
 {
   "name": "meeshkan-bank",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "The great and mighty Meeshkan Bank.",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ."
   },
   "keywords": [],
-  "author": "",
+  "author": "Meeshkan",
   "license": "ISC",
   "dependencies": {
+    "@apollo/client": "^3.1.4",
+    "@chakra-ui/core": "^0.8.0",
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27",
     "apollo-server": "^2.15.1",
-    "apollo-server-express": "^2.15.1",
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
+    "apollo-server-micro": "^2.17.0",
+    "emotion-theming": "^10.0.27",
     "graphql": "^15.3.0",
+    "graphql-tools": "^6.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "next": "^9.5.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-hook-form": "^6.7.1",
     "uuid": "^8.2.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "eslint": "^7.8.1",
+    "eslint-plugin-react": "^7.20.6"
   }
 }
