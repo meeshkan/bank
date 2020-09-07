@@ -1,0 +1,81 @@
+import { useState } from 'react';
+import Router from 'next/router';
+import { gql, useMutation, useApolloClient } from '@apollo/client';
+import { useForm } from 'react-hook-form';
+import {
+    useToast,
+    InputGroup,
+    InputRightElement,
+    FormControl,
+    FormLabel,
+    FormErrorMessage,
+    Input,
+    Heading,
+    Stack,
+    Button,
+} from "@chakra-ui/core";
+import { getErrorMessage } from '../lib/auth/form';
+
+const RemoveClientMutation = gql`
+    mutation RemoveClientMutation($id: ID!) {
+        removeClient(id: $id)
+    }
+`
+
+const RemoveClient = () => {
+    const client = useApolloClient();
+    const [removeClient] = useMutation(RemoveClientMutation);
+    const { handleSubmit, errors, setError, register, formState } = useForm();
+    const toast = useToast();
+
+    const onSubmit = async ({ id }) => {
+        try {
+            await client.resetStore();
+            const { data } = await removeClient({
+                variables: {
+                    id,
+                },
+            });
+
+            if (data.removeClient) {
+                toast({
+                    title: "Client removed.",
+                    description: `Client with ID ${id} has been removed.`,
+                    status: "success",
+                    duration: 5000,
+                    isClosable: true,
+                });
+            }
+        } catch (error) {
+            setError('id', { message: getErrorMessage(error) });
+        }
+    };
+
+    return (
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <FormControl isInvalid={errors.id} isRequired>
+                <FormLabel htmlFor="id">ID</FormLabel>
+                <Input
+                    name="id"
+                    type="text"
+                    placeholder="Enter the client's ID"
+                    ref={register}
+                    mb={4}
+                />
+                <FormErrorMessage>
+                    {errors.id && errors.id.message}
+                </FormErrorMessage>
+            </FormControl>
+            <Button
+                mt={4}
+                variantColor="teal"
+                isLoading={formState.isSubmitting}
+                type="submit"
+            >
+                Remove Client
+            </Button>
+        </form>
+    );
+};
+
+export default RemoveClient;
