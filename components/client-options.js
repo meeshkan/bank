@@ -34,6 +34,11 @@ const ClientOptions = ({ id, name, email, balanceInEuroCents }) => {
                             <b>{numberWithCommas(balanceInEuroCents / 100)}€</b>
                         </Text>
                     </Action>
+                    <Action title="View your ID">
+                        <Text fontSize="lg">
+                            ID: <b>{id}</b>
+                        </Text>
+                    </Action>
                     <Action title="Send money">
                         <SendMoney />
                     </Action>
