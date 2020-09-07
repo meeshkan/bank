@@ -1,4 +1,6 @@
+import React from 'react';
 import NextLink from 'next/link';
+import PropTypes from 'prop-types';
 import { Button, Flex, Box, Heading, Icon, Text, Stack } from '@chakra-ui/core';
 import styled from '@emotion/styled';
 import LogoutButton from './logout-button';
@@ -65,6 +67,12 @@ const Nav = ({ authenticated }) => {
             </Box>
         </CustomFlex>
     );
+};
+
+Nav.propTypes = {
+    authenticated: PropTypes.shape({
+        as: PropTypes.string,
+    }),
 };
 
 export default Nav;

@@ -1,19 +1,14 @@
-import { useState } from 'react';
-import Router from 'next/router';
+import React from 'react';
 import { gql, useMutation, useApolloClient } from '@apollo/client';
 import { useForm } from 'react-hook-form';
 import {
     useToast,
-    InputGroup,
-    InputRightElement,
     FormControl,
     FormLabel,
     FormErrorMessage,
     Input,
-    Heading,
-    Stack,
     Button,
-} from "@chakra-ui/core";
+} from '@chakra-ui/core';
 import { getErrorMessage } from '../lib/auth/form';
 
 const SendMoneyMutation = gql`
@@ -23,7 +18,7 @@ const SendMoneyMutation = gql`
             balanceInEuroCents
         }
     }
-`
+`;
 
 const SendMoney = () => {
     const client = useApolloClient();
@@ -43,9 +38,9 @@ const SendMoney = () => {
 
             if (data.sendMoney) {
                 toast({
-                    title: "Amount sent.",
+                    title: 'Amount sent.',
                     description: `${amount} cents were sent to client with ID ${id}.`,
-                    status: "success",
+                    status: 'success',
                     duration: 5000,
                     isClosable: true,
                 });
@@ -58,7 +53,7 @@ const SendMoney = () => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <FormControl isInvalid={errors.amount} isRequired>
-                <FormLabel htmlFor="id">Recipient's ID</FormLabel>
+                <FormLabel htmlFor="id">Recipient&apos;s ID</FormLabel>
                 <Input
                     name="id"
                     type="text"

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Router from 'next/router';
 import { gql, useMutation, useApolloClient } from '@apollo/client';
 import { useForm } from 'react-hook-form';
@@ -12,7 +12,7 @@ import {
     Heading,
     Stack,
     Button,
-} from "@chakra-ui/core";
+} from '@chakra-ui/core';
 import { getErrorMessage } from '../lib/auth/form';
 import Container from './container';
 
@@ -24,7 +24,7 @@ const AuthenticateAsClientMutation = gql`
             email
         }
     }
-`
+`;
 
 const ClientLogin = () => {
     const client = useApolloClient();
@@ -76,14 +76,14 @@ const ClientLogin = () => {
                             <Input
                                 name="password"
                                 pr="4.5rem"
-                                type={show ? "text" : "password"}
+                                type={show ? 'text' : 'password'}
                                 placeholder="Enter password"
                                 ref={register}
                                 isRequired
                             />
                             <InputRightElement width="4.5rem">
                                 <Button h="1.75rem" size="sm" onClick={handleClick}>
-                                    {show ? "Hide" : "Show"}
+                                    {show ? 'Hide' : 'Show'}
                                 </Button>
                             </InputRightElement>
                         </InputGroup>

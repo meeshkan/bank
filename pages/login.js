@@ -1,4 +1,4 @@
-import { Stack, Spinner, Text } from '@chakra-ui/core';
+import React from 'react';
 import ClientLogin from '../components/client-login';
 
 const Clients = () => {

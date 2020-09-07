@@ -1,5 +1,6 @@
+import React from 'react';
 import { gql, useQuery } from '@apollo/client';
-import { Stack, Spinner } from '@chakra-ui/core';
+import { Stack } from '@chakra-ui/core';
 import StaffLogin from '../components/staff-login';
 import StaffOptions from '../components/staff-options';
 import Container from '../components/container';
@@ -9,7 +10,7 @@ const RootQuery = gql`
     query RootQuery {
         root
     }
-`
+`;
 
 const Staff = () => {
     const { data, loading, error } = useQuery(RootQuery);

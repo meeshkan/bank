@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import { Heading, Box, Button, Collapse } from "@chakra-ui/core";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { Heading, Box, Button, Collapse } from '@chakra-ui/core';
 
-const ActionCard = ({ title, href, children }) => {
+const ActionCard = ({ title, children }) => {
     const [show, setShow] = useState(false);
     const handleToggle = () => setShow(!show);
 
@@ -15,6 +16,11 @@ const ActionCard = ({ title, href, children }) => {
             </Collapse>
         </Box>
     );
+};
+
+ActionCard.propTypes = {
+    title: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
 };
 
 export default ActionCard;

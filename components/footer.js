@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Flex } from '@chakra-ui/core';
 import styled from '@emotion/styled';
 
@@ -15,5 +17,9 @@ const Footer = ({ sticky = true }) => (
         &copy; 2020, Great and Mighty <b>Meeshkan Bank</b>
     </FixedFooter>
 );
+
+Footer.propTypes = {
+    sticky: PropTypes.boolean,
+};
 
 export default Footer;

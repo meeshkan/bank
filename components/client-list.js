@@ -1,4 +1,4 @@
-import { useState, useReducer } from 'react';
+import React from 'react';
 import { gql, useQuery } from '@apollo/client';
 import {
     Heading,
@@ -6,8 +6,7 @@ import {
     Box,
     Button,
     Text,
-} from "@chakra-ui/core";
-import { getErrorMessage } from '../lib/auth/form';
+} from '@chakra-ui/core';
 
 const ListClientsQuery = gql`
     query ListClientsQuery {
@@ -18,7 +17,7 @@ const ListClientsQuery = gql`
             balanceInEuroCents
         }
     }
-`
+`;
 
 const numberWithCommas = number => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');

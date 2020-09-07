@@ -1,3 +1,4 @@
+import React from 'react';
 import { Stack, Spinner } from '@chakra-ui/core';
 import Container from './container';
 

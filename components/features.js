@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Box, Heading, Text, Stack } from '@chakra-ui/core';
 
 const Feature = ({ title, desc, ...rest }) => {
@@ -7,6 +9,11 @@ const Feature = ({ title, desc, ...rest }) => {
             <Text mt={4}>{desc}</Text>
         </Box>
     );
+};
+
+Feature.propTypes = {
+    title: PropTypes.string.isRequired,
+    desc: PropTypes.string.isRequired,
 };
 
 const Features = () => {

@@ -1,5 +1,6 @@
-import { Button, Flex, Box, Heading } from '@chakra-ui/core';
-
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Flex } from '@chakra-ui/core';
 import Nav from './nav';
 import Footer from './footer';
 
@@ -22,6 +23,12 @@ const Container = ({ children, stickyFooter, authRole }) => {
             </Flex>
         </>
     );
+};
+
+Container.propTypes = {
+    children: PropTypes.node.isRequired,
+    stickyFooter: PropTypes.bool,
+    authRole: PropTypes.string,
 };
 
 export default Container;

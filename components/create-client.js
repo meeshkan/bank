@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import Router from 'next/router';
+import React, { useState } from 'react';
 import { gql, useMutation, useApolloClient } from '@apollo/client';
 import { useForm } from 'react-hook-form';
 import {
@@ -10,10 +9,8 @@ import {
     FormLabel,
     FormErrorMessage,
     Input,
-    Heading,
-    Stack,
     Button,
-} from "@chakra-ui/core";
+} from '@chakra-ui/core';
 import { getErrorMessage } from '../lib/auth/form';
 
 const AddClientMutation = gql`
@@ -23,7 +20,7 @@ const AddClientMutation = gql`
             name
         }
     }
-`
+`;
 
 const CreateClient = () => {
     const client = useApolloClient();
@@ -46,11 +43,11 @@ const CreateClient = () => {
             });
 
             if (data.addClient) {
-                const { name: clientName } = data.addClient
+                const { name: clientName } = data.addClient;
                 toast({
-                    title: "Client registered.",
+                    title: 'Client registered.',
                     description: `We've created an account for ${clientName}.`,
-                    status: "success",
+                    status: 'success',
                     duration: 5000,
                     isClosable: true,
                 });
@@ -84,13 +81,13 @@ const CreateClient = () => {
                     <Input
                         name="password"
                         pr="4.5rem"
-                        type={showPassword ? "text" : "password"}
+                        type={showPassword ? 'text' : 'password'}
                         placeholder="Enter client's password"
                         ref={register}
                     />
                     <InputRightElement width="4.5rem">
                         <Button h="1.75rem" size="sm" onClick={() => setShowPassword(!showPassword)}>
-                            {showPassword ? "Hide" : "Show"}
+                            {showPassword ? 'Hide' : 'Show'}
                         </Button>
                     </InputRightElement>
                 </InputGroup>

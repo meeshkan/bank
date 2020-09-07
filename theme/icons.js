@@ -1,3 +1,5 @@
+import React from 'react';
+
 const iconPaths = {
     Logo: {
         path: (
@@ -37,7 +39,7 @@ const iconPaths = {
                 />
             </g>
         ),
-        viewBox: "0 0 149 30",
+        viewBox: '0 0 149 30',
     },
 };
 

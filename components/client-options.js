@@ -1,16 +1,11 @@
-import { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {
     Heading,
-    Box,
     Stack,
-    Button,
     Text,
-    Collapse,
-} from "@chakra-ui/core";
+} from '@chakra-ui/core';
 import Container from './container';
-import ClientList from './client-list';
-import CreateClient from './create-client';
-import RemoveClient from './remove-client';
 import SendMoney from './send-money';
 import Action from './action-card';
 
@@ -18,7 +13,7 @@ const numberWithCommas = number => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
-const ClientOptions = ({ id, name, email, balanceInEuroCents }) => {
+const ClientOptions = ({ id, name, balanceInEuroCents }) => {
     return (
         <Container stickyFooter={false} authRole="client">
             <Stack
@@ -46,6 +41,12 @@ const ClientOptions = ({ id, name, email, balanceInEuroCents }) => {
             </Stack>
         </Container>
     );
+};
+
+ClientOptions.propTypes = {
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    balanceInEuroCents: PropTypes.number.isRequired,
 };
 
 export default ClientOptions;

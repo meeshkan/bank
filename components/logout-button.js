@@ -1,4 +1,4 @@
-import { useState } from 'react'; 
+import React, { useState } from 'react'; 
 import { gql, useMutation, useApolloClient } from '@apollo/client';
 import { Button } from '@chakra-ui/core';
 import Router from 'next/router';
@@ -7,7 +7,7 @@ const SignOutMutation = gql`
     mutation SignOutMutation {
         signOut
     }
-`
+`;
 
 const LogoutButton = () => {
     const client = useApolloClient();

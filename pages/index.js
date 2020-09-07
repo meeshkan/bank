@@ -1,20 +1,7 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { gql, useQuery } from '@apollo/client';
-import { Heading, Text, Flex, Stack } from '@chakra-ui/core';
-import Link from 'next/link';
-import Head from 'next/head';
+import React from 'react';
+import { Heading, Text, Stack } from '@chakra-ui/core';
 import Container from '../components/container';
 import Features from '../components/features';
-
-const ClientQuery = gql`
-    query ClientQuery {
-        client {
-            id
-            email
-        }
-    }
-`
 
 const Home = () => {
     return (

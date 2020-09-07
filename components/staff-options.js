@@ -1,12 +1,8 @@
-import { useState } from 'react';
+import React from 'react';
 import {
     Heading,
-    Box,
     Stack,
-    Button,
-    Text,
-    Collapse,
-} from "@chakra-ui/core";
+} from '@chakra-ui/core';
 import Container from './container';
 import ClientList from './client-list';
 import CreateClient from './create-client';

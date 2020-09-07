@@ -1,26 +1,21 @@
-import { useState } from 'react';
-import Router from 'next/router';
+import React from 'react';
 import { gql, useMutation, useApolloClient } from '@apollo/client';
 import { useForm } from 'react-hook-form';
 import {
     useToast,
-    InputGroup,
-    InputRightElement,
     FormControl,
     FormLabel,
     FormErrorMessage,
     Input,
-    Heading,
-    Stack,
     Button,
-} from "@chakra-ui/core";
+} from '@chakra-ui/core';
 import { getErrorMessage } from '../lib/auth/form';
 
 const RemoveClientMutation = gql`
     mutation RemoveClientMutation($id: ID!) {
         removeClient(id: $id)
     }
-`
+`;
 
 const RemoveClient = () => {
     const client = useApolloClient();
@@ -39,9 +34,9 @@ const RemoveClient = () => {
 
             if (data.removeClient) {
                 toast({
-                    title: "Client removed.",
+                    title: 'Client removed.',
                     description: `Client with ID ${id} has been removed.`,
-                    status: "success",
+                    status: 'success',
                     duration: 5000,
                     isClosable: true,
                 });
