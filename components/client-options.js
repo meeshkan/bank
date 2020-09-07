@@ -11,6 +11,7 @@ import Container from './container';
 import ClientList from './client-list';
 import CreateClient from './create-client';
 import RemoveClient from './remove-client';
+import SendMoney from './send-money';
 import Action from './action-card';
 
 const numberWithCommas = number => {
@@ -34,7 +35,7 @@ const ClientOptions = ({ id, name, email, balanceInEuroCents }) => {
                         </Text>
                     </Action>
                     <Action title="Send money">
-                        <Text>Sending money feature coming soon! For now, just call us. :)</Text>
+                        <SendMoney />
                     </Action>
                 </Stack>
             </Stack>
