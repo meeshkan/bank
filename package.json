@@ -13,6 +13,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "http-status": "^1.4.2",
+    "swagger-ui-express": "^4.1.4",
     "uuid": "^8.2.0"
   },
   "devDependencies": {
