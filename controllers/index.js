@@ -130,7 +130,7 @@ const controllers = {
         }
 
         if (client.length === 0) {
-            throw new AuthenticationError(`Could not find a client with id ${id}`);
+            throw new AuthenticationError(`Could not find a client with id ${who}`);
         }
 
         if (role.balanceInEuroCents < amount) {
