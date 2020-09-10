@@ -18,6 +18,6 @@ const PORT = 8080;
 
 app.listen({ port: PORT }, () =>
   console.log(
-    `Server ready at http://localhost:${PORT} with openapi spec visible at http://localhost:${PORT}/bank/openapi. Have fun!`
+    `Server ready at http://localhost:${PORT} with openapi spec visible at http://localhost:${PORT}/api/openapi. Have fun!`
   )
 );
