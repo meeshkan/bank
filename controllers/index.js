@@ -1,6 +1,6 @@
 const { v4: UUIDv4 } = require('uuid');
 const { AuthenticationError, ForbiddenError } = require('../utils/errors');
-const { openapi } = require('../openapi');
+const openapi = require('../openapi');
 
 const rootPassword = 'pa$$w0rd';
 const unauthenticated = 'unauthenticated';
