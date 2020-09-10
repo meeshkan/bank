@@ -27,7 +27,7 @@ exports.openapi = {
         description: "Wanna know the version of the Meeshkan Bank? Use this!\n",
         responses: {
           "200": {
-            description: "The version",
+            description: "The version.",
             content: {
               "application/json": {
                 schema: {
@@ -42,7 +42,7 @@ exports.openapi = {
             },
           },
           "400": {
-            description: "bad input parameter",
+            description: "Bad input parameter.",
           },
         },
       },
