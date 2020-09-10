@@ -28,6 +28,12 @@ class ForbiddenError extends HTTPError {
     }
 }
 
+class UserInputError extends HTTPError {
+    constructor(message = 'Invalid user input.') {
+        super(UNAUTHORIZED, message);
+    }
+}
+
 class InternalServerError extends HTTPError {
     constructor(message = 'Internal server error.') {
         super(INTERNAL_SERVER_ERROR, message);
@@ -37,5 +43,6 @@ class InternalServerError extends HTTPError {
 module.exports = {
     AuthenticationError,
     ForbiddenError,
+    UserInputError,
     InternalServerError,
 };

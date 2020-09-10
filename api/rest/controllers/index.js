@@ -1,34 +1,27 @@
 const { v4: UUIDv4 } = require('uuid');
-const { AuthenticationError, ForbiddenError } = require('../utils/errors');
-const openapi = require('../openapi');
+const {
+    AuthenticationError,
+    ForbiddenError,
+    UserInputError,
+} = require('../utils/errors');
+const openapi = require('../../../openapi');
+const { version } = require('../../../package');
+const {
+    rootPassword,
+    unauthenticated,
+    root,
+    emailRegex,
+    MIN_PASSWORD_LENGTH,
+} = require('../../../config/constants');
+const data = require('../../../data');
 
-const rootPassword = 'pa$$w0rd';
-const unauthenticated = 'unauthenticated';
-const root = 'root';
-
-let role = unauthenticated;
-
-const clients = [
-  {
-    id: '5c9cf5e4-60fa-4069-9728-bb4f660b5364',
-    name: 'Mike Solomon',
-    email: 'mike@meeshkan.com',
-    password: 'not secure',
-    balanceInEuroCents: 1492,
-  },
-  {
-    id: 'fd800015-6d09-4469-92a2-61d8fd25723f',
-    name: 'Makenna Smutz',
-    email: 'makenna@meeshkan.com',
-    password: 'also not secure',
-    balanceInEuroCents: 1493,
-  },
-];
+let role = data.role;
+const clients = data.clients;
 
 const controllers = {
     getVersion: (req, res) => {
         res.json({
-            version: '0.0.0',
+            version,
         });
     },
     getOpenAPISpec: (req, res) => {
@@ -53,15 +46,39 @@ const controllers = {
 
         if (role !== root) {
             throw new AuthenticationError(
-                'Must be authenticated as root to add a client'
+                "Must be authenticated as root to add a client"
+            );
+        }
+
+        if (clients.map(client => client.name).includes(name)) {
+            throw new UserInputError(
+                `${name} is already a part of our clientele`
+            );
+        }
+
+        if (!emailRegex.test(email)) {
+            throw new UserInputError(
+                "Please enter a valid email address"
+            );
+        }
+
+        if (clients.map(client => client.email).includes(email)) {
+            throw new UserInputError(
+                `The email address ${email} is associated with an existing client`
+            )
+        }
+
+        if (!(password.length >= MIN_PASSWORD_LENGTH)) {
+            throw new UserInputError(
+                `Password must be at least ${MIN_PASSWORD_LENGTH} characters long`
             );
         }
 
         const newClient = {
             id: UUIDv4(),
-            name,
-            email,
-            password,
+            name: name,
+            email: email,
+            password: password,
             balanceInEuroCents: balance,
         };
 
