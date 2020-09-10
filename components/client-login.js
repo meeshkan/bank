@@ -49,8 +49,8 @@ const ClientLogin = () => {
         }
     };
 
-    const [show, setShow] = useState(false);
-    const handleClick = () => setShow(!show);
+    const [showPassword, setShowPassword] = useState(false);
+    const handleClick = () => setShowPassword(!showPassword);
 
     return (
         <Container>
@@ -76,14 +76,14 @@ const ClientLogin = () => {
                             <Input
                                 name="password"
                                 pr="4.5rem"
-                                type={show ? 'text' : 'password'}
+                                type={showPassword ? 'text' : 'password'}
                                 placeholder="Enter password"
                                 ref={register}
                                 isRequired
                             />
                             <InputRightElement width="4.5rem">
                                 <Button h="1.75rem" size="sm" onClick={handleClick}>
-                                    {show ? 'Hide' : 'Show'}
+                                    {showPassword ? 'Hide' : 'Show'}
                                 </Button>
                             </InputRightElement>
                         </InputGroup>
