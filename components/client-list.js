@@ -7,6 +7,7 @@ import {
     Button,
     Text,
 } from '@chakra-ui/core';
+import { numberWithCommas } from '../lib/utils';
 
 const ListClientsQuery = gql`
     query ListClientsQuery {
@@ -18,10 +19,6 @@ const ListClientsQuery = gql`
         }
     }
 `;
-
-const numberWithCommas = number => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-};
 
 const ClientList = () => {
     const { data, loading, error, refetch } = useQuery(ListClientsQuery);

@@ -8,10 +8,7 @@ import {
 import Container from './container';
 import SendMoney from './send-money';
 import Action from './action-card';
-
-const numberWithCommas = number => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-};
+import { numberWithCommas } from '../lib/utils';
 
 const ClientOptions = ({ id, name, balanceInEuroCents }) => {
     return (
