@@ -19,7 +19,7 @@ const Footer = ({ sticky = true }) => (
 );
 
 Footer.propTypes = {
-    sticky: PropTypes.boolean,
+    sticky: PropTypes.bool,
 };
 
 export default Footer;
