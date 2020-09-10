@@ -1,14 +1,14 @@
 {
   "name": "meeshkan-bank",
   "version": "1.0.0",
-  "description": "",
+  "description": "The great and mighty Meeshkan Bank.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Meeshkan",
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^2.17.0",
