@@ -22,7 +22,7 @@ npm install && npm run dev
 
 ## GraphQL
 
-The Meeshkan Bank's graphql endpoint is accessible at `http://localhost:8080/bank/graphql`. Point your browser there after starting up the Meeshkan bank and you'll see a nice UI where you can interact with the bank.
+The Meeshkan Bank's graphql endpoint is accessible at [`http://localhost:8080/api/graphql`](http://localhost:8080/api/graphql). Point your browser there after starting up the Meeshkan bank and you'll see a nice UI where you can interact with the bank.
 
 When you start the Meeshkan bank, it is in an unauthenticated state. You can authenticate as root using the `authenticateAsRoot` graphql endpoint with the password `pa$$w0rd` (did we mention that we take security seriously at the Meeshkan Bank?).
 
@@ -30,7 +30,7 @@ From the root state, you can add clients and delete clients. You can also authen
 
 ## OpenAPI
 
-In addition to its primary graphql interface, the Meeshkan bank does have some extra endpoints. To learn what these are, you can point your browser at http://localhost:8080/bank/openapi.
+In addition to its primary graphql interface, the Meeshkan bank does have some extra endpoints. To learn what these are, you can point your browser at [`http://localhost:8080/docs`](http://localhost:8080/docs) and [`http://localhost:8080/api/openapi`](http://localhost:8080/api/openapi).
 
 ## Gotchyas
 
