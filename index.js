@@ -1,5 +1,5 @@
 const express = require('express');
-const { InternalServerError } = require('../utils/errors');
+const { InternalServerError } = require('./utils/errors');
 const apiRouter = require('./routes');
 
 const app = express();
