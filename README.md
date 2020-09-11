@@ -11,7 +11,7 @@ The Meeshkan Bank is proudly tested by [Meeshkan](https://meeshkan.com), and if 
 To start the Meeshkan bank, you can run the following command:
 
 ```bash
-npm install && npm start
+npm install && npm run build && npm start
 ```
 
 To run the Meeshkan bank in dev mode, you can run
