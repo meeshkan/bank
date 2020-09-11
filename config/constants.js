@@ -6,9 +6,9 @@ const MIN_PASSWORD_LENGTH = 8;
 const emailRegex = /(.+)@(.+){2,}\.(.+){2,}/;
 
 module.exports = {
-    rootPassword,
-    unauthenticated,
-    root,
-    emailRegex,
-    MIN_PASSWORD_LENGTH,
+	rootPassword,
+	unauthenticated,
+	root,
+	emailRegex,
+	MIN_PASSWORD_LENGTH,
 };

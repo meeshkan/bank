@@ -32,15 +32,23 @@ const RemoveClient = () => {
 				},
 			});
 
-			if (data.removeClient) {
-				toast({
-					title: 'Client removed.',
-					description: `Client with ID ${id} has been removed.`,
-					status: 'success',
+			if (!data.removeClient) {
+				return toast({
+					title: 'Client removal failed.',
+					description: `Client with ID "${id}" could not be removed.`,
+					status: 'error',
 					duration: 5000,
 					isClosable: true,
 				});
 			}
+
+			toast({
+				title: 'Client removed.',
+				description: `Client with ID "${id}" has been removed.`,
+				status: 'success',
+				duration: 5000,
+				isClosable: true,
+			});
 		} catch (error) {
 			setError('id', { message: getErrorMessage(error) });
 		}

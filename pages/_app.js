@@ -4,6 +4,7 @@ import { ThemeProvider, CSSReset } from '@chakra-ui/core';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '../lib/apollo/client';
 import theme from '../theme';
+import 'swagger-ui-react/swagger-ui.css';
 
 const App = ({ Component, pageProps }) => {
 	const apolloClient = useApollo(pageProps.initialApolloState);
