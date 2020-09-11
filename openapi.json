@@ -1,0 +1,472 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "The great and Mighty Meeshkan Bank!",
+    "version": "0.0.0",
+    "title": "Simple Inventory API",
+    "contact": {
+      "email": "mike@meeshkan.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "paths": {
+    "/api/version": {
+      "get": {
+        "summary": "Get current version",
+        "operationId": "getVersion",
+        "description": "Wanna know the version of the Meeshkan Bank? Use this!\n",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "version": {
+                      "type": "string",
+                      "example": "0.0.0"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": []
+      }
+    },
+    "/api/admin/authentication": {
+      "post": {
+        "summary": "Authenticate as admin",
+        "operationId": "authenticateAsAdmin",
+        "description": "Allows admin to authenticate using the password.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 401
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Incorrect password"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": []
+      }
+    },
+    "/api/client/authentication": {
+      "post": {
+        "summary": "Authenticate as client",
+        "operationId": "authenticateAsClient",
+        "description": "Allows clients to authenticate using their email and password.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "client": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "fd800015-6d09-4469-92a2-61d8fd25723f"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Makenna Smutz"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "makenna@meeshkan.com"
+                        },
+                        "password": {
+                          "type": "string",
+                          "example": "******"
+                        },
+                        "balanceInEuroCents": {
+                          "type": "number",
+                          "example": 1493
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 401
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Email or password incorrect"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": []
+      }
+    },
+    "/api/clients": {
+      "get": {
+        "summary": "Get client list",
+        "operationId": "getClients",
+        "description": "Allows admin to view list of clientele.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "clients": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "email": {
+                            "type": "string"
+                          },
+                          "password": {
+                            "type": "string"
+                          },
+                          "balanceInEuroCents": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "email",
+                          "password",
+                          "balanceInEuroCents"
+                        ]
+                      },
+                      "example": [
+                        {
+                          "id": "fd800015-6d09-4469-92a2-61d8fd25723f",
+                          "name": "Makenna Smutz",
+                          "email": "makenna@meeshkan.com",
+                          "password": "also not secure",
+                          "balanceInEuroCents": 127
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 401
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Can only fetch clients as root"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": []
+      }
+    },
+    "/api/client": {
+      "get": {
+        "summary": "Get current client",
+        "operationId": "getClient",
+        "description": "Allows client to view details about his/her profile.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "role": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "fd800015-6d09-4469-92a2-61d8fd25723f"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Makenna Smutz"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "makenna@meeshkan.com"
+                        },
+                        "password": {
+                          "type": "string",
+                          "example": "******"
+                        },
+                        "balanceInEuroCents": {
+                          "type": "number",
+                          "example": 127
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 401
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Unauthenticated as client"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": []
+      },
+      "delete": {
+        "summary": "Delete client",
+        "operationId": "removeClient",
+        "description": "Allows admin to delete a client by ID.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 401
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Must be authenticated as root to remove a client"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": []
+      }
+    },
+    "/api/client/transaction": {
+      "post": {
+        "summary": "Create transaction",
+        "operationId": "sendMoney",
+        "description": "Allows client to send money to another client by ID.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "role": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "fd800015-6d09-4469-92a2-61d8fd25723f"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Makenna Smutz"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "makenna@meeshkan.com"
+                        },
+                        "password": {
+                          "type": "string",
+                          "example": "******"
+                        },
+                        "balanceInEuroCents": {
+                          "type": "number",
+                          "example": 250
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 401
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Unauthenticated as client"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": []
+      }
+    },
+    "/api/signout": {
+      "post": {
+        "summary": "Sign-out",
+        "operationId": "signOut",
+        "description": "Allows client or admin to logout.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": []
+      }
+    }
+  },
+  "tags": []
+}
