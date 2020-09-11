@@ -49,7 +49,7 @@ const RemoveClient = () => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <FormControl isInvalid={errors.id} isRequired>
-                <FormLabel htmlFor="id">ID</FormLabel>
+                <FormLabel htmlFor="id">Client ID</FormLabel>
                 <Input
                     name="id"
                     type="text"
