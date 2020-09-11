@@ -44,7 +44,7 @@ const Nav = ({ authenticated }) => {
                 {authenticated ? (
                     <>
                         <LogoutButton />
-                        <NextLink href={authenticated.as === 'staff' ? '/staff' : '/home'} passHref>
+                        <NextLink href={authenticated.as === 'staff' ? '/staff' : '/clients'} passHref>
                             <Button as="a" variant="solid" variantColor="teal" m={2} p={[1, 4]}>
                                 Dashboard
                             </Button>
@@ -57,7 +57,7 @@ const Nav = ({ authenticated }) => {
                                 Staff
                             </Button>
                         </NextLink>
-                        <NextLink href="/login" passHref>
+                        <NextLink href="/clients" passHref>
                             <Button as="a" variant="solid" variantColor="teal" m={2} p={[1, 4]}>
                                 Clients
                             </Button>

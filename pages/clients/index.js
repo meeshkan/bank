@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { gql, useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
-import ClientOptionsPage from '../../components/client/options';
+import ClientOptionsPage from '../../components/clients/options';
 import LoadingPage from '../../components/loading';
 import ErrorPage from '../../components/error';
 
@@ -23,19 +23,19 @@ const Clients = () => {
 
     useEffect(() => {
         if (!(client || loading)) {
-            router.push('/client/login');
+            router.push('/clients/login');
         }
     }, [client, loading]);
 
-    if (loading) {
-        return <LoadingPage />;
+    if (client) {
+        return <ClientOptionsPage {...client} />;
     }
 
     if (error) {
         return <ErrorPage error={error} />;
     }
 
-    return <ClientOptionsPage {...client} />;
+    return <LoadingPage />;
 };
 
 export default Clients;

@@ -42,7 +42,7 @@ const ClientLogin = () => {
             });
 
             if (data.authenticateAsClient) {
-                Router.push('/client');
+                Router.push('/clients');
             }
         } catch (error) {
             setError('password', { message: getErrorMessage(error) });
