@@ -2,7 +2,7 @@ import React from 'react';
 import StaffLoginPage from '../../components/staff/login';
 
 const Staff = () => {
-    return <StaffLoginPage />;
+	return <StaffLoginPage />;
 };
 
 export default Staff;

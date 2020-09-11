@@ -6,36 +6,36 @@ import LoadingPage from '../../components/loading';
 import ErrorPage from '../../components/error';
 
 const ClientQuery = gql`
-    query RootQuery {
-        me {
-            id
-            name
-            email
-            balanceInEuroCents
-        }
-    }
+	query RootQuery {
+		me {
+			id
+			name
+			email
+			balanceInEuroCents
+		}
+	}
 `;
 
 const Clients = () => {
-    const { data, loading, error } = useQuery(ClientQuery);
-    const client = data?.me;
-    const router = useRouter();
+	const { data, loading, error } = useQuery(ClientQuery);
+	const client = data?.me;
+	const router = useRouter();
 
-    useEffect(() => {
-        if (!(client || loading)) {
-            router.push('/clients/login');
-        }
-    }, [client, loading]);
+	useEffect(() => {
+		if (!(client || loading)) {
+			router.push('/clients/login');
+		}
+	}, [client, loading]);
 
-    if (client) {
-        return <ClientOptionsPage {...client} />;
-    }
+	if (client) {
+		return <ClientOptionsPage {...client} />;
+	}
 
-    if (error) {
-        return <ErrorPage error={error} />;
-    }
+	if (error) {
+		return <ErrorPage error={error} />;
+	}
 
-    return <LoadingPage />;
+	return <LoadingPage />;
 };
 
 export default Clients;
