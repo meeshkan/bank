@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\""
   },
   "keywords": [],
   "author": "Meeshkan",
@@ -29,7 +29,6 @@
     "uuid": "^8.3.0"
   },
   "devDependencies": {
-    "eslint": "^7.8.1",
-    "eslint-plugin-react": "^7.20.6"
+    "prettier": "^2.1.1"
   }
 }
