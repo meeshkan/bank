@@ -13,36 +13,29 @@ import {
     Stack,
     Button,
 } from '@chakra-ui/core';
-import { getErrorMessage } from '../lib/auth/form';
-import Container from './container';
+import { getErrorMessage } from '../../lib/auth/form';
+import Container from '../container';
 
-const AuthenticateAsClientMutation = gql`
-    mutation AuthenticateAsClientMutation($email: String!, $password: String!) {
-        authenticateAsClient(email: $email, password: $password) {
-            id
-            name
-            email
-        }
+const AuthenticateAsRootMutation = gql`
+    mutation AuthenticateAsRootMutation($password: String!) {
+        authenticateAsRoot(password: $password)
     }
 `;
 
-const ClientLogin = () => {
+const StaffLogin = () => {
     const client = useApolloClient();
-    const [authenticateAsClient] = useMutation(AuthenticateAsClientMutation);
+    const [authenticateAsRoot] = useMutation(AuthenticateAsRootMutation);
     const { handleSubmit, errors, setError, register, formState } = useForm();
 
-    const onSubmit = async ({ email, password }) => {
+    const onSubmit = async ({ password }) => {
         try {
             await client.resetStore();
-            const { data } = await authenticateAsClient({
-                variables: {
-                    email,
-                    password,
-                },
+            const { data } = await authenticateAsRoot({
+                variables: { password },
             });
 
-            if (data.authenticateAsClient) {
-                Router.push('/home');
+            if (data.authenticateAsRoot) {
+                Router.reload(window.location.pathname);
             }
         } catch (error) {
             setError('password', { message: getErrorMessage(error) });
@@ -60,17 +53,9 @@ const ClientLogin = () => {
                 mt="10"
                 maxWidth="900px"
             >
-                <Heading as="h1">Client Login</Heading>
+                <Heading as="h1">Staff Login</Heading>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <FormControl isInvalid={errors.password} isRequired>
-                        <FormLabel htmlFor="email">Email</FormLabel>
-                        <Input
-                            name="email"
-                            type="email"
-                            placeholder="Enter client's email address"
-                            ref={register}
-                            mb={4}
-                        />
                         <FormLabel htmlFor="password">Password</FormLabel>
                         <InputGroup size="md">
                             <Input
@@ -105,4 +90,4 @@ const ClientLogin = () => {
     );
 };
 
-export default ClientLogin;
+export default StaffLogin;

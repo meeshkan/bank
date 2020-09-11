@@ -9,7 +9,7 @@ import {
     Input,
     Button,
 } from '@chakra-ui/core';
-import { getErrorMessage } from '../lib/auth/form';
+import { getErrorMessage } from '../../lib/auth/form';
 
 const SendMoneyMutation = gql`
     mutation SendMoneyMutation($who: ID!, $amount: Int!) {

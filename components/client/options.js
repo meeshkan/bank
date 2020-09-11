@@ -5,10 +5,10 @@ import {
     Stack,
     Text,
 } from '@chakra-ui/core';
-import Container from './container';
+import Container from '../container';
 import SendMoney from './send-money';
-import Action from './action-card';
-import { numberWithCommas } from '../lib/utils';
+import Action from '../action-card';
+import { numberWithCommas } from '../../lib/utils';
 
 const ClientOptions = ({ id, name, balanceInEuroCents }) => {
     return (

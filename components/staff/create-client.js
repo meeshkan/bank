@@ -11,7 +11,7 @@ import {
     Input,
     Button,
 } from '@chakra-ui/core';
-import { getErrorMessage } from '../lib/auth/form';
+import { getErrorMessage } from '../../lib/auth/form';
 
 const AddClientMutation = gql`
     mutation AddClientMutation($email: String!, $name: String!, $password: String!, $balanceInEuroCents: Int!) {

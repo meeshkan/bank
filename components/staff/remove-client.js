@@ -9,7 +9,7 @@ import {
     Input,
     Button,
 } from '@chakra-ui/core';
-import { getErrorMessage } from '../lib/auth/form';
+import { getErrorMessage } from '../../lib/auth/form';
 
 const RemoveClientMutation = gql`
     mutation RemoveClientMutation($id: ID!) {

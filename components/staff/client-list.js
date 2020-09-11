@@ -7,7 +7,7 @@ import {
     Button,
     Text,
 } from '@chakra-ui/core';
-import { numberWithCommas } from '../lib/utils';
+import { numberWithCommas } from '../../lib/utils';
 
 const ListClientsQuery = gql`
     query ListClientsQuery {

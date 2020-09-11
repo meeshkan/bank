@@ -3,11 +3,11 @@ import {
     Heading,
     Stack,
 } from '@chakra-ui/core';
-import Container from './container';
+import Container from '../container';
 import ClientList from './client-list';
 import CreateClient from './create-client';
 import RemoveClient from './remove-client';
-import Action from './action-card';
+import Action from '../action-card';
 
 const StaffOptions = () => {
     return (

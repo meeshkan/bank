@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { gql, useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
-import ClientOptions from '../components/client-options';
-import LoadingPage from '../components/loading-page';
+import ClientOptionsPage from '../../components/client/options';
+import LoadingPage from '../../components/loading';
+import ErrorPage from '../../components/error';
 
 const ClientQuery = gql`
     query RootQuery {
@@ -21,18 +22,20 @@ const Clients = () => {
     const router = useRouter();
 
     useEffect(() => {
-        if (!(client || loading) || error) {
-            router.push('/login');
+        if (!(client || loading)) {
+            router.push('/client/login');
         }
     }, [client, loading]);
 
-    if (client) {
-        return <ClientOptions {...client} />;
+    if (loading) {
+        return <LoadingPage />;
     }
 
-    return (
-        <LoadingPage />
-    );
+    if (error) {
+        return <ErrorPage error={error} />;
+    }
+
+    return <ClientOptionsPage {...client} />;
 };
 
 export default Clients;
