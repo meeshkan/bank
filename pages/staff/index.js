@@ -22,15 +22,15 @@ const Staff = () => {
         }
     }, [isRoot, loading]);
 
-    if (loading) {
-        return <LoadingPage />;
+    if (isRoot) {
+        return <StaffOptionsPage />;
     }
 
     if (error) {
         return <ErrorPage error={error} />;
     }
 
-    return <StaffOptionsPage />;
+    return <LoadingPage />;
 };
 
 export default Staff;
