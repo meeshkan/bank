@@ -35,7 +35,7 @@ const StaffLogin = () => {
             });
 
             if (data.authenticateAsRoot) {
-                Router.reload(window.location.pathname);
+                Router.push('/staff');
             }
         } catch (error) {
             setError('password', { message: getErrorMessage(error) });
