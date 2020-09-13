@@ -5,10 +5,4 @@ const root = 'root';
 const MIN_PASSWORD_LENGTH = 8;
 const emailRegex = /(.+)@(.+){2,}\.(.+){2,}/;
 
-export {
-	rootPassword,
-	unauthenticated,
-	root,
-	emailRegex,
-	MIN_PASSWORD_LENGTH,
-};
+export { rootPassword, unauthenticated, root, emailRegex, MIN_PASSWORD_LENGTH };

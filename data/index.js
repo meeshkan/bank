@@ -22,4 +22,4 @@ const clients = [
 export default {
 	role,
 	clients,
-}
+};
