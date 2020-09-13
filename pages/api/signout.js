@@ -1,9 +1,12 @@
-import { OK, METHOD_NOT_ALLOWED } from 'http-status';
-import { AuthenticationError } from '../../lib/utils/errors';
+import { handler } from '../../lib/utils/api';
+import {
+	AuthenticationError,
+	MethodNotAllowedError,
+} from '../../lib/utils/errors';
 import { unauthenticated } from '../../config/constants';
 import data from '../../data';
 
-export default (req, res) => {
+const signout = (req, res) => {
 	const { method } = req;
 
 	switch (method) {
@@ -11,10 +14,13 @@ export default (req, res) => {
 			const { method } = req;
 
 			data.role = unauthenticated;
-			res.status(OK).json({ success: true });
-			break;
-		default:
-			res.setHeader('Allow', ['POST']);
-			res.status(METHOD_NOT_ALLOWED).end(`Method ${method} Not Allowed`);
+			return {
+				json: { success: true },
+			};
 	}
+
+	const allowedMethods = ['POST'];
+	throw new MethodNotAllowedError(method, allowedMethods);
 };
+
+export default handler(signout);

@@ -1,8 +1,21 @@
-import { OK } from 'http-status';
-import { version } from '../../package.json';
+import { handler } from '../../lib/utils/api';
+import { MethodNotAllowedError } from '../../lib/utils/errors';
+import { version as currentVersion } from '../../package.json';
 
-export default (_, response) => {
-	return response.status(OK).json({
-		version,
-	});
+const version = (req, res) => {
+	const { method } = req;
+
+	switch (method) {
+		case 'GET':
+			return {
+				json: {
+					version: currentVersion,
+				},
+			};
+	}
+
+	const allowedMethods = ['GET'];
+	throw new MethodNotAllowedError(method, allowedMethods);
 };
+
+export default handler(version);

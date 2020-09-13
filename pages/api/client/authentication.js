@@ -1,11 +1,12 @@
-import { OK, METHOD_NOT_ALLOWED } from 'http-status';
+import { handler } from '../../../lib/utils/api';
 import {
 	AuthenticationError,
 	ForbiddenError,
+	MethodNotAllowedError,
 } from '../../../lib/utils/errors';
 import data from '../../../data';
 
-export default (req, res) => {
+const clientAuth = (req, res) => {
 	const { method } = req;
 
 	switch (method) {
@@ -16,27 +17,24 @@ export default (req, res) => {
 				(client) => client.email == email && client.password == password,
 			);
 
-			let error;
-
 			if (client.length > 1) {
-				error = new ForbiddenError(
+				throw new ForbiddenError(
 					'The Meeshkan bank is in an inconsistent state. Sorry!',
 				);
 			}
 
 			if (client.length === 0) {
-				error = new AuthenticationError('Email or password incorrect');
-			}
-
-			if (error) {
-				return res.status(error.status).json(error);
+				throw new AuthenticationError('Email or password incorrect');
 			}
 
 			data.role = client[0];
-			res.status(OK).json({ client: client[0] });
-			break;
-		default:
-			res.setHeader('Allow', ['POST']);
-			res.status(METHOD_NOT_ALLOWED).end(`Method ${method} Not Allowed`);
+			return {
+				json: { client: client[0] },
+			};
 	}
+
+	const allowedMethods = ['POST'];
+	throw new MethodNotAllowedError(method, allowedMethods);
 };
+
+export default handler(clientAuth);

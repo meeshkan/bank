@@ -1,25 +1,30 @@
-import { OK, METHOD_NOT_ALLOWED } from 'http-status';
-import { AuthenticationError } from '../../../lib/utils/errors';
+import { handler } from '../../../lib/utils/api';
+import {
+	AuthenticationError,
+	MethodNotAllowedError,
+} from '../../../lib/utils/errors';
 import { rootPassword, root } from '../../../config/constants';
 import data from '../../../data';
 
-export default (req, res, error) => {
+const adminAuth = (req, res) => {
 	const { method } = req;
 
 	switch (method) {
 		case 'POST':
 			const { password } = req.body;
 
-			if (password === rootPassword) {
-				data.role = root;
-				return res.status(OK).json({ success: true });
+			if (password !== rootPassword) {
+				throw new AuthenticationError('Incorrect password');
 			}
 
-			const error = new AuthenticationError('Incorrect password');
-			res.status(error.status).json(error);
-			break;
-		default:
-			res.setHeader('Allow', ['POST']);
-			res.status(METHOD_NOT_ALLOWED).end(`Method ${method} Not Allowed`);
+			data.role = root;
+			return {
+				json: { success: true },
+			};
 	}
+
+	const allowedMethods = ['POST'];
+	throw new MethodNotAllowedError(method, allowedMethods);
 };
+
+export default handler(adminAuth);
