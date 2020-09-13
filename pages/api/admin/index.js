@@ -1,5 +1,5 @@
-const { root } = require('../../config/constants');
-const data = require('../../data');
+import { root } from '../../config/constants';
+import data from '../../data';
 
 export default (req, res) => {
 	const { method } = req;

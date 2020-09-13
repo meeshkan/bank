@@ -1,8 +1,8 @@
-const {
+import {
 	AuthenticationError,
 	ForbiddenError,
-} = require('../../../lib/utils/errors');
-const data = require('../../../data');
+} from '../../../lib/utils/errors';
+import data from '../../../data';
 
 export default (req, res) => {
 	const { method } = req;

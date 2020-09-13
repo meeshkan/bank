@@ -1,6 +1,6 @@
-const { AuthenticationError } = require('../../../lib/utils/errors');
-const { rootPassword, root } = require('../../../config/constants');
-const data = require('../../../data');
+import { AuthenticationError } from '../../../lib/utils/errors';
+import { rootPassword, root } from '../../../config/constants';
+import data from '../../../data';
 
 export default (req, res, error) => {
 	const { method } = req;

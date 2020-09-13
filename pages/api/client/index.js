@@ -1,16 +1,16 @@
-const { v4: UUIDv4 } = require('uuid');
-const {
+import { v4 as UUIDv4 } from 'uuid';
+import {
 	AuthenticationError,
 	ForbiddenError,
 	UserInputError,
-} = require('../../../lib/utils/errors');
-const {
+} from '../../../lib/utils/errors';
+import {
 	unauthenticated,
 	root,
 	emailRegex,
 	MIN_PASSWORD_LENGTH,
-} = require('../../../config/constants');
-const data = require('../../../data');
+} from '../../../config/constants';
+import data from '../../../data';
 
 export default (req, res) => {
 	const { method } = req;

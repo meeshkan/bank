@@ -1,4 +1,4 @@
-const { unauthenticated } = require('../config/constants');
+import { unauthenticated } from '../config/constants';
 
 let role = unauthenticated;
 
@@ -19,5 +19,7 @@ const clients = [
 	},
 ];
 
-exports.role = role;
-exports.clients = clients;
+export default {
+	role,
+	clients,
+}
