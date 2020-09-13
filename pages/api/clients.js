@@ -1,3 +1,4 @@
+import { OK, METHOD_NOT_ALLOWED } from 'http-status';
 import { AuthenticationError } from '../../lib/utils/errors';
 import { root } from '../../config/constants';
 import data from '../../data';
@@ -12,10 +13,10 @@ export default (req, res) => {
 				return res.status(error.status).json(error);
 			}
 
-			res.status(200).json({ clients: data.clients });
+			res.status(OK).json({ clients: data.clients });
 			break;
 		default:
 			res.setHeader('Allow', ['GET']);
-			res.status(405).end(`Method ${method} Not Allowed`);
+			res.status(METHOD_NOT_ALLOWED).end(`Method ${method} Not Allowed`);
 	}
 };

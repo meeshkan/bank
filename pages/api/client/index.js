@@ -1,3 +1,4 @@
+import { OK, METHOD_NOT_ALLOWED } from 'http-status';
 import { v4 as UUIDv4 } from 'uuid';
 import {
 	AuthenticationError,
@@ -22,7 +23,7 @@ export default (req, res) => {
 				return res.status(error.status).json(error);
 			}
 
-			res.status(200).json({ role: data.role });
+			res.status(OK).json({ role: data.role });
 			break;
 		case 'POST':
 			const { name, email, password, balance } = req.body;
@@ -70,7 +71,7 @@ export default (req, res) => {
 			};
 
 			data.clients.push(newClient);
-			res.status(200).json({ success: true, client: newClient });
+			res.status(OK).json({ success: true, client: newClient });
 			break;
 		case 'DELETE':
 			const { id } = req.body;
@@ -89,10 +90,10 @@ export default (req, res) => {
 			}
 
 			data.clients.splice(index, 1);
-			res.status(200).json({ success: true });
+			res.status(OK).json({ success: true });
 			break;
 		default:
 			res.setHeader('Allow', ['GET', 'POST', 'DELETE']);
-			res.status(405).end(`Method ${method} Not Allowed`);
+			res.status(METHOD_NOT_ALLOWED).end(`Method ${method} Not Allowed`);
 	}
 };

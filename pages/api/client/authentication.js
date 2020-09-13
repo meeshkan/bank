@@ -1,3 +1,4 @@
+import { OK, METHOD_NOT_ALLOWED } from 'http-status';
 import {
 	AuthenticationError,
 	ForbiddenError,
@@ -32,10 +33,10 @@ export default (req, res) => {
 			}
 
 			data.role = client[0];
-			res.status(200).json({ client: client[0] });
+			res.status(OK).json({ client: client[0] });
 			break;
 		default:
 			res.setHeader('Allow', ['POST']);
-			res.status(405).end(`Method ${method} Not Allowed`);
+			res.status(METHOD_NOT_ALLOWED).end(`Method ${method} Not Allowed`);
 	}
 };
