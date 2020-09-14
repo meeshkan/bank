@@ -367,6 +367,113 @@
 					}
 				},
 				"tags": ["admin-actions"]
+			},
+			"post": {
+				"summary": "Create client",
+				"operationId": "addClient",
+				"description": "Allows an admin to register a new client.",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"client": {
+											"type": "object",
+											"properties": {
+												"id": {
+													"type": "string",
+													"example": "88c57023-cedf-4e51-893b-19f78f74f6f8"
+												},
+												"name": {
+													"type": "string",
+													"example": "Nikolaos Kamarinakis"
+												},
+												"email": {
+													"type": "string",
+													"example": "nikolaos@meeshkan.com"
+												},
+												"password": {
+													"type": "string",
+													"example": "******"
+												},
+												"balanceInEuroCents": {
+													"type": "number",
+													"example": 1305
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Unauthorized",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"status": {
+											"type": "number",
+											"example": 401
+										},
+										"error": {
+											"type": "object",
+											"properties": {
+												"message": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								},
+								"examples": {
+									"unauthenticated": {
+										"value": {
+											"error": {
+												"status": 401,
+												"message": "Must be authenticated as root to remove a client"
+											}
+										}
+									},
+									"client-exists": {
+										"value": {
+											"error": {
+												"status": 401,
+												"message": "Nikolaos Kamarinakis is already a part of our clientele"
+											}
+										}
+									},
+									"email-exists": {
+										"value": {
+											"error": {
+												"status": 401,
+												"message": "The email address nikolaos@meeshkan.com is associated with an existing client"
+											}
+										}
+									},
+									"short-password": {
+										"value": {
+											"error": {
+												"status": 401,
+												"message": "Password must be at least 8 characters long"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"tags": ["admin-actions"]
 			}
 		},
 		"/api/client/transaction": {
