@@ -527,16 +527,40 @@
 									"type": "object",
 									"properties": {
 										"status": {
-											"type": "number",
-											"example": 401
+											"type": "number"
 										},
 										"error": {
 											"type": "object",
 											"properties": {
 												"message": {
-													"type": "string",
-													"example": "Unauthenticated as client"
+													"type": "string"
 												}
+											}
+										}
+									}
+								},
+								"examples": {
+									"unauthenticated": {
+										"value": {
+											"error": {
+												"status": 401,
+												"message": "Unauthenticated as client"
+											}
+										}
+									},
+									"client-not-found": {
+										"value": {
+											"error": {
+												"status": 401,
+												"message": "Could not find a client with id 7e54de14-3bb1-456a-8449-2e6b17abbba9"
+											}
+										}
+									},
+									"insufficient-funds": {
+										"value": {
+											"error": {
+												"status": 401,
+												"message": "You have insufficient funds to complete this transaction."
 											}
 										}
 									}
