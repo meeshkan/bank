@@ -19,7 +19,7 @@ const clientAuth = (req, res) => {
 
 			if (client.length > 1) {
 				throw new ForbiddenError(
-					'The Meeshkan bank is in an inconsistent state. Sorry!',
+					'The Meeshkan bank is in an inconsistent state',
 				);
 			}
 
