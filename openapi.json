@@ -36,7 +36,7 @@
 						}
 					}
 				},
-				"tags": []
+				"tags": ["version"]
 			}
 		},
 		"/api/admin/authentication": {
@@ -87,7 +87,7 @@
 						}
 					}
 				},
-				"tags": []
+				"tags": ["auth"]
 			}
 		},
 		"/api/client/authentication": {
@@ -159,7 +159,7 @@
 						}
 					}
 				},
-				"tags": []
+				"tags": ["auth"]
 			}
 		},
 		"/api/clients": {
@@ -245,7 +245,7 @@
 						}
 					}
 				},
-				"tags": []
+				"tags": ["admin-actions"]
 			}
 		},
 		"/api/client": {
@@ -317,7 +317,7 @@
 						}
 					}
 				},
-				"tags": []
+				"tags": ["client-actions"]
 			},
 			"delete": {
 				"summary": "Delete client",
@@ -366,7 +366,7 @@
 						}
 					}
 				},
-				"tags": []
+				"tags": ["admin-actions"]
 			}
 		},
 		"/api/client/transaction": {
@@ -438,7 +438,7 @@
 						}
 					}
 				},
-				"tags": []
+				"tags": ["client-actions"]
 			}
 		},
 		"/api/signout": {
@@ -464,7 +464,7 @@
 						}
 					}
 				},
-				"tags": []
+				"tags": ["client-actions", "admin-actions"]
 			}
 		}
 	},
