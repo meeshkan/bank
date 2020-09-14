@@ -552,7 +552,7 @@
 										"value": {
 											"error": {
 												"status": 401,
-												"message": "Could not find a client with id 7e54de14-3bb1-456a-8449-2e6b17abbba9"
+												"message": "Could not find a client with id \"7e54de14-3bb1-456a-8449-2e6b17abbba9\""
 											}
 										}
 									},
@@ -560,7 +560,7 @@
 										"value": {
 											"error": {
 												"status": 401,
-												"message": "You have insufficient funds to complete this transaction."
+												"message": "You have insufficient funds to complete this transaction"
 											}
 										}
 									}

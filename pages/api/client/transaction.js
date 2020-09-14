@@ -21,17 +21,17 @@ const clientTransaction = (req, res) => {
 			const client = data.clients.filter((client) => client.id == who);
 			if (client.length > 1) {
 				throw new ForbiddenError(
-					'The Meeshkan bank is in an inconsistent state. Sorry!',
+					'The Meeshkan bank is in an inconsistent state',
 				);
 			}
 
 			if (client.length === 0) {
-				throw new AuthenticationError(`Could not find a client with id ${who}`);
+				throw new AuthenticationError(`Could not find a client with id "${who}"`);
 			}
 
 			if (data.role.balanceInEuroCents < amount) {
 				throw new ForbiddenError(
-					'You have insufficient funds to complete this transaction.',
+					'You have insufficient funds to complete this transaction',
 				);
 			}
 
