@@ -1,7 +1,7 @@
 import { handler } from '../../../lib/utils/api';
-import { root } from '../../config/constants';
+import { root } from '../../../config/constants';
 import { MethodNotAllowedError } from '../../../lib/utils/errors';
-import data from '../../data';
+import data from '../../../data';
 
 const admin = (req, res) => {
 	const { method } = req;
