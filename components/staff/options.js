@@ -20,7 +20,7 @@ const StaffOptions = () => {
 					<Action title="Open new client account">
 						<CreateClient />
 					</Action>
-					<Action title="Delete an existing client account">
+					<Action title="Delete client account">
 						<RemoveClient />
 					</Action>
 				</Stack>
