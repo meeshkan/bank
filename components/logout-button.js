@@ -36,11 +36,11 @@ const LogoutButton = () => {
 			onClick={handleClick}
 			isLoading={isLoading}
 			as="a"
+			variant="solid"
 			variantColor="teal"
-			variant="outline"
 			cursor="pointer"
 			m={2}
-			p={[1, 4]}
+			p={[2, 4]}
 		>
 			Logout
 		</Button>
