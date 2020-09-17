@@ -11,7 +11,7 @@ const Home = () => {
 				spacing={6}
 				textAlign="center"
 				m="0 auto"
-				mt="20"
+				my="20"
 				maxWidth="700px"
 			>
 				<Heading
