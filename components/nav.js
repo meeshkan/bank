@@ -41,27 +41,11 @@ const Nav = ({ authenticated }) => {
 			</Box>
 			<Box>
 				{authenticated ? (
-					<>
-						<LogoutButton />
-						<NextLink
-							href={authenticated.as === 'staff' ? '/staff' : '/clients'}
-							passHref
-						>
-							<Button
-								as="a"
-								variant="solid"
-								variantColor="teal"
-								m={2}
-								p={[1, 4]}
-							>
-								Dashboard
-							</Button>
-						</NextLink>
-					</>
+					<LogoutButton />
 				) : (
 					<>
 						<NextLink href="/staff" passHref>
-							<Button as="a" variant="ghost" m={2} p={[1, 4]}>
+							<Button as="a" variant="ghost" m={2} p={[2, 4]}>
 								Staff
 							</Button>
 						</NextLink>
@@ -71,7 +55,7 @@ const Nav = ({ authenticated }) => {
 								variant="solid"
 								variantColor="teal"
 								m={2}
-								p={[1, 4]}
+								p={[2, 4]}
 							>
 								Clients
 							</Button>
