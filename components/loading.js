@@ -5,7 +5,7 @@ import Container from './container';
 const Loading = () => {
 	return (
 		<Container>
-			<Stack m="0 auto">
+			<Stack m="0 auto" mt="10">
 				<Spinner size="xl" />
 			</Stack>
 		</Container>
