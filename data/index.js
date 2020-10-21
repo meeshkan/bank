@@ -9,6 +9,7 @@ const clients = [
 		email: 'mike@meeshkan.com',
 		password: 'not secure',
 		balanceInEuroCents: 1492,
+		createdAt: new Date('July 15, 2020 00:20:18'),
 	},
 	{
 		id: 'fd800015-6d09-4469-92a2-61d8fd25723f',
@@ -16,6 +17,7 @@ const clients = [
 		email: 'makenna@meeshkan.com',
 		password: 'also not secure',
 		balanceInEuroCents: 1493,
+		createdAt: new Date('July 16, 2020 03:24:00'),
 	},
 ];
 

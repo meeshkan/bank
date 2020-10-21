@@ -1,7 +1,7 @@
 import React from 'react';
 import { gql, useQuery } from '@apollo/client';
 import { Heading, Stack, Box, Button, Text } from '@chakra-ui/core';
-import { numberWithCommas } from '../../lib/utils';
+import { numberWithCommas, months } from '../../lib/utils';
 
 const ListClientsQuery = gql`
 	query ListClientsQuery {
@@ -10,6 +10,7 @@ const ListClientsQuery = gql`
 			name
 			email
 			balanceInEuroCents
+			createdAt
 		}
 	}
 `;
@@ -42,6 +43,12 @@ const ClientList = () => {
 					<Text fontSize="md">
 						current balance:{' '}
 						<em>{numberWithCommas(client.balanceInEuroCents / 100)}€</em>
+					</Text>
+					<Text fontSize="md">
+						client since:{' '}
+						<em>{`${months[new Date(client.createdAt).getMonth()]}, ${new Date(
+							client.createdAt,
+						).getFullYear()}`}</em>
 					</Text>
 				</Box>
 			))}

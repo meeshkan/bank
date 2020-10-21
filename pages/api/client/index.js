@@ -61,6 +61,7 @@ const client = (req, res) => {
 				email: email,
 				password: password,
 				balanceInEuroCents: balance,
+				createdAt: new Date(),
 			};
 
 			data.clients.push(newClient);
