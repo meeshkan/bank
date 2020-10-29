@@ -13,7 +13,10 @@ const App = ({ Component, pageProps }) => {
 	return (
 		<>
 			<Head>
-				<script src="/meeshkan.js" defer />
+				<script
+					src="https://recorder.meeshkan.com/meeshkan.js?client_id=meeshkan_bank"
+					defer
+				/>
 			</Head>
 			<ApolloProvider client={apolloClient}>
 				<ThemeProvider theme={theme}>
