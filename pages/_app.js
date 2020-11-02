@@ -15,7 +15,6 @@ const App = ({ Component, pageProps }) => {
 			<Head>
 				<script
 					src="https://recorder.meeshkan.com/record.js?client_id=meeshkan_bank"
-					defer
 				/>
 			</Head>
 			<ApolloProvider client={apolloClient}>
