@@ -14,6 +14,7 @@ const App = ({ Component, pageProps }) => {
 		<>
 			<Head>
 				<script
+					async
 					src="https://recorder.meeshkan.com/record.js?client_id=meeshkan_bank"
 				/>
 			</Head>
