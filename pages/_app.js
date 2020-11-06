@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import PropTypes from 'prop-types';
 import { ThemeProvider, CSSReset } from '@chakra-ui/core';
 import { ApolloProvider } from '@apollo/client';
@@ -10,12 +11,20 @@ const App = ({ Component, pageProps }) => {
 	const apolloClient = useApollo(pageProps.initialApolloState);
 
 	return (
-		<ApolloProvider client={apolloClient}>
-			<ThemeProvider theme={theme}>
-				<CSSReset />
-				<Component {...pageProps} />
-			</ThemeProvider>
-		</ApolloProvider>
+		<>
+			<Head>
+				<script
+					async
+					src="https://recorder.meeshkan.com/record.js?client_id=meeshkan_bank"
+				/>
+			</Head>
+			<ApolloProvider client={apolloClient}>
+				<ThemeProvider theme={theme}>
+					<CSSReset />
+					<Component {...pageProps} />
+				</ThemeProvider>
+			</ApolloProvider>
+		</>
 	);
 };
 
