@@ -1,0 +1,8 @@
+image: ubuntu:20.04
+
+build:
+  stage: build
+  script:
+    - echo hello, world
+
+
